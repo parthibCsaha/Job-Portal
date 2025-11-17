@@ -200,7 +200,7 @@ sequenceDiagram
 #### 🏠 Landing Page
 ![Landing Page](screenshots/home.png)
 
-#### 🏠 Landing Page
+#### 🏠 Registration Page
 ![Registration Page](screenshots/register.png)
 
 
