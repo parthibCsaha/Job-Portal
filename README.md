@@ -1,7 +1,8 @@
 ### 🚀 Job Portal – Full Stack Web Application
 
-    A modern full-stack recruitment platform built with Spring Boot, React (Vite), and PostgreSQL.
-    It connects candidates, employers, and admins through a clean, secure, and scalable system. 
+    A modern, full-stack job portal platform built with **Spring Boot (Java)** and **React + Vite**.  
+    It allows **candidates** to browse and apply for jobs, **employers** to post and manage job listings, and **admins** to oversee the entire system.
+    
 ------------------------------------------------------------------------------------------------------------
 ### ⭐ Features
   #### 👨‍🎓 Candidates
@@ -98,7 +99,7 @@ flowchart LR
     EmailService --> NotificationService
 ```
 -------------------------------------------------------------------------------------------------
-📊 Data Model (ER Diagram)
+### 📊 Data Model (ER Diagram)
 ```mermaid
 erDiagram
   USER ||--|{ CANDIDATE : "is"
@@ -173,4 +174,52 @@ erDiagram
   }
 ```
 ----------------------------------------------------------------------------------------------
+### 🔐 Authentication Flow
+```mermaid
+sequenceDiagram
+  participant Candidate
+  participant Frontend
+  participant Backend
+  participant AuthService
+  participant UserRepo
 
+  Candidate ->> Frontend: User enters email + password  
+  Frontend ->> Backend: POST /api/auth/login  
+  Backend ->> AuthService: validate credentials  
+  AuthService ->> UserRepo: fetch user  
+  UserRepo -->> AuthService: return user data  
+  AuthService ->> AuthService: generate JWT  
+  AuthService -->> Backend: send JWT  
+  Backend -->> Frontend: return token + user info  
+  Frontend ->> LocalStorage: save token  
+  Frontend -->> Candidate: redirect to dashboard  
+```
+------------------------------------------------------------------------------------------------
+### ✅ Features
+
+  -Job search with filters (location, type, experience)
+  -Apply with resume + cover letter
+  -Save jobs for later
+  -User dashboard for candidates and employers
+  -Role-based access: Admin / Employer / Candidate
+  -Email notifications (on application submit/status change)
+  
+-------------------------------------------------------------------------------------------------
+### ⚙️ Tech Stack
+
+ #### Backend
+  -Java 17
+  -Spring Boot 3
+  -Spring Security + JWT
+  -Spring Data JPA (Hibernate)
+  -PostgreSQL
+  -Maven
+  
+ #### Frontend
+  -React 18
+  -Vite
+  -Tailwind CSS
+  -React Router
+  -Axios
+  
+---------------------------------------------------------------------------------------------------
