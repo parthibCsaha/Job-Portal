@@ -183,43 +183,43 @@ sequenceDiagram
   participant AuthService
   participant UserRepo
 
-  Candidate ->> Frontend: User enters email + password  
+  Candidate ->> Frontend: Enter email + password  
   Frontend ->> Backend: POST /api/auth/login  
-  Backend ->> AuthService: validate credentials  
-  AuthService ->> UserRepo: fetch user  
-  UserRepo -->> AuthService: return user data  
-  AuthService ->> AuthService: generate JWT  
-  AuthService -->> Backend: send JWT  
-  Backend -->> Frontend: return token + user info  
-  Frontend ->> LocalStorage: save token  
-  Frontend -->> Candidate: redirect to dashboard  
+  Backend ->> AuthService: Validate credentials  
+  AuthService ->> UserRepo: Retrieve user data  
+  UserRepo -->> AuthService: User found  
+  AuthService ->> AuthService: Generate JWT  
+  AuthService -->> Backend: Return JWT  
+  Backend -->> Frontend: Send token + user info  
+  Frontend ->> LocalStorage: Save JWT  
+  Frontend -->> Candidate: Redirect to dashboard  
 ```
 ------------------------------------------------------------------------------------------------
 ### ✅ Features
 
-  -Job search with filters (location, type, experience)
-  -Apply with resume + cover letter
-  -Save jobs for later
-  -User dashboard for candidates and employers
-  -Role-based access: Admin / Employer / Candidate
-  -Email notifications (on application submit/status change)
+   Job search with filters (location, type, experience)
+   Apply with resume + cover letter
+   Save jobs for later
+   User dashboard for candidates and employers
+   Role-based access: Admin / Employer / Candidate
+   Email notifications (on application submit/status change)
   
 -------------------------------------------------------------------------------------------------
 ### ⚙️ Tech Stack
 
  #### Backend
-  -Java 17
-  -Spring Boot 3
-  -Spring Security + JWT
-  -Spring Data JPA (Hibernate)
-  -PostgreSQL
-  -Maven
+   Java 17
+   Spring Boot 3
+   Spring Security + JWT
+   Spring Data JPA (Hibernate)
+   PostgreSQL
+   Maven
   
  #### Frontend
-  -React 18
-  -Vite
-  -Tailwind CSS
-  -React Router
-  -Axios
+   React 18
+   Vite
+   Tailwind CSS
+   React Router
+   Axios
   
 ---------------------------------------------------------------------------------------------------
