@@ -200,6 +200,10 @@ sequenceDiagram
 #### 🏠 Landing Page
 ![Landing Page](screenshots/home.png)
 
+#### 🏠 Landing Page
+![Registration Page](screenshots/register.png)
+
+
 ------------------------------------------------------------------------------------------------
 ### ✅ API Endpoints
 #### Authentication (/api/auth)
