@@ -5,14 +5,13 @@
 ------------------------------------------------------------------------------------------------------------
 ### ⭐ Features
   #### 👨‍🎓 Candidates
-<ul>
+  
     Browse & filter jobs (location, type, experience, keywords)
     View job details with company info
     Apply with cover letter + resume upload
     Track application status
     Save jobs for later
     Manage profile
-</ul>
 
   #### 👨‍💼 Employers
     
@@ -29,7 +28,7 @@
     View platform-wide statistics
     Complete system oversight
 ------------------------------------------------------------------------------------------------------------
-### System Architecture
+### 🏗️ System Architecture
 ```mermaid
 flowchart LR
 
@@ -99,4 +98,58 @@ flowchart LR
     EmailService --> NotificationService
 ```
 -------------------------------------------------------------------------------------------------
+## 🧩 Backend Layered Architecture
+```mermaid
+flowchart TB
+
+    subgraph Controller["🎯 Controller Layer"]
+        AuthController
+        UserController
+        JobController
+        CompanyController
+        ApplicationController
+        SavedJobController
+        NotificationController
+    end
+
+    subgraph Service["🧠 Service Layer"]
+        AuthService
+        UserService
+        JobService
+        CompanyService
+        ApplicationService
+        SavedJobService
+        NotificationService
+        EmailService
+    end
+
+    subgraph Repo["📦 Repository Layer"]
+        UserRepo
+        RoleRepo
+        CompanyRepo
+        JobRepo
+        CandidateRepo
+        EmployerRepo
+        ApplicationRepo
+        SavedJobRepo
+        NotificationRepo
+    end
+
+    subgraph DB["🗄 PostgreSQL Database"]
+        Users[(users)]
+        Roles[(roles)]
+        Companies[(companies)]
+        Jobs[(jobs)]
+        Candidates[(candidates)]
+        Employers[(employers)]
+        Applications[(applications)]
+        SavedJobs[(saved_jobs)]
+        Notifications[(notifications)]
+    end
+
+    Controller --> Service
+    Service --> Repo
+    Repo --> DB
+```
+----------------------------------------------------------------------------------------------
 
