@@ -1,7 +1,7 @@
 ### 🚀 Job Portal – Full Stack Web Application
 
-    A modern, full-stack job portal platform built with **Spring Boot (Java)** and **React + Vite**.  
-    It allows **candidates** to browse and apply for jobs, **employers** to post and manage job listings, and **admins** to oversee the entire system.
+  -A modern, full-stack job portal platform built with **Spring Boot (Java)** and **React + Vite**.  
+  -It allows **candidates** to browse and apply for jobs, **employers** to post and manage job listings, and **admins** to oversee the entire system.
     
 ------------------------------------------------------------------------------------------------------------
 ### ⭐ Features
