@@ -31,6 +31,7 @@
 ------------------------------------------------------------------------------------------------------------
 ### 🏛️ Architecture
   #### System Architecture
+```mermaid
 flowchart LR
   
     subgraph Client["🌐 Frontend (React + Vite)"]
@@ -69,6 +70,6 @@ flowchart LR
     Users --> Roles
     Saved --> Users
     Saved --> Jobs
-
+```
 -------------------------------------------------------------------------------------------------
 
