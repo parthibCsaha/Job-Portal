@@ -98,58 +98,79 @@ flowchart LR
     EmailService --> NotificationService
 ```
 -------------------------------------------------------------------------------------------------
-## 🧩 Backend Layered Architecture
+📊 Data Model (ER Diagram)
 ```mermaid
-flowchart TB
-
-    subgraph Controller["🎯 Controller Layer"]
-        AuthController
-        UserController
-        JobController
-        CompanyController
-        ApplicationController
-        SavedJobController
-        NotificationController
-    end
-
-    subgraph Service["🧠 Service Layer"]
-        AuthService
-        UserService
-        JobService
-        CompanyService
-        ApplicationService
-        SavedJobService
-        NotificationService
-        EmailService
-    end
-
-    subgraph Repo["📦 Repository Layer"]
-        UserRepo
-        RoleRepo
-        CompanyRepo
-        JobRepo
-        CandidateRepo
-        EmployerRepo
-        ApplicationRepo
-        SavedJobRepo
-        NotificationRepo
-    end
-
-    subgraph DB["🗄 PostgreSQL Database"]
-        Users[(users)]
-        Roles[(roles)]
-        Companies[(companies)]
-        Jobs[(jobs)]
-        Candidates[(candidates)]
-        Employers[(employers)]
-        Applications[(applications)]
-        SavedJobs[(saved_jobs)]
-        Notifications[(notifications)]
-    end
-
-    Controller --> Service
-    Service --> Repo
-    Repo --> DB
+erDiagram
+  USER ||--|{ CANDIDATE : "is"
+  USER ||--|{ EMPLOYER : "is"
+  USER }|--|| ROLE : "has"
+  
+  EMPLOYER }|--|| COMPANY : "works_for"
+  EMPLOYER ||--|{ JOB : "creates"
+  
+  COMPANY ||--|{ JOB : "offers"
+  
+  JOB ||--|{ APPLICATION : "receives"
+  JOB ||--|{ SAVEDJOB : "is_saved_as"
+  
+  CANDIDATE ||--|{ APPLICATION : "submits"
+  CANDIDATE ||--|{ SAVEDJOB : "saves"
+  
+  APPLICATION {
+    Long id
+    Long job_id
+    Long candidate_id
+    String status
+    String resume_url
+    String cover_letter
+    Timestamp applied_at
+  }
+  
+  JOB {
+    Long id
+    String title
+    String description
+    String job_type
+    String job_status
+    Long company_id
+    Long employer_id
+  }
+  
+  USER {
+    Long id
+    String name
+    String email
+    String password
+  }
+  
+  ROLE {
+    Long id
+    String name
+  }
+  
+  CANDIDATE {
+    Long id
+    Long user_id
+  }
+  
+  EMPLOYER {
+    Long id
+    Long user_id
+    Long company_id
+  }
+  
+  SAVEDJOB {
+    Long id
+    Long job_id
+    Long user_id
+  }
+  
+  NOTIFICATION {
+    Long id
+    Long user_id
+    String message
+    Boolean read
+  }
 ```
 ----------------------------------------------------------------------------------------------
 
