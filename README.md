@@ -197,29 +197,30 @@ sequenceDiagram
 ------------------------------------------------------------------------------------------------
 ### ✅ Features
 
-   Job search with filters (location, type, experience)
-   Apply with resume + cover letter
-   Save jobs for later
-   User dashboard for candidates and employers
-   Role-based access: Admin / Employer / Candidate
-   Email notifications (on application submit/status change)
+- Job search with filters (location, type, experience)
+-  Apply with resume + cover letter
+-  Save jobs for later
+-  User dashboard for candidates and employers
+-  Role-based access: Admin / Employer / Candidate
+-  Email notifications (on application submit/status change)
   
 -------------------------------------------------------------------------------------------------
 ### ⚙️ Tech Stack
 
  #### Backend
-   Java 17
-   Spring Boot 3
-   Spring Security + JWT
-   Spring Data JPA (Hibernate)
-   PostgreSQL
-   Maven
+- Java 17
+- Spring Boot 3
+- Spring Security + JWT
+- Spring Data JPA (Hibernate)
+- PostgreSQL
+- Maven
   
  #### Frontend
-   React 18
-   Vite
-   Tailwind CSS
-   React Router
-   Axios
+- React 18
+- Vite
+- Tailwind CSS
+- React Router
+- Axios
+
   
 ---------------------------------------------------------------------------------------------------
