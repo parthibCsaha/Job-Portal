@@ -215,6 +215,9 @@ sequenceDiagram
 ### Apply Job   
 ![Apply Job](screenshots/user.png)
 
+### Candidate 
+![Candidate](screenshots/candidate.png)
+
 ------------------------------------------------------------------------------------------------
 ### ✅ API Endpoints
 #### Authentication (/api/auth)
