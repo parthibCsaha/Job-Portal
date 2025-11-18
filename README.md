@@ -209,6 +209,9 @@ sequenceDiagram
 ### Job Posting 
 ![Post Job](screenshots/post-job.png)
 
+### Employer 
+![Employer](screenshots/employer.png)
+
 ------------------------------------------------------------------------------------------------
 ### ✅ API Endpoints
 #### Authentication (/api/auth)
