@@ -197,14 +197,17 @@ sequenceDiagram
 ------------------------------------------------------------------------------------------------
 ### 📸 Screenshots
 
-#### 🏠 Landing Page
+#### Landing Page
 ![Landing Page](screenshots/home.png)
 
-#### 🏠 Registration Page
+#### Registration Page
 ![Registration Page](screenshots/register.png)
 
-### 🛡️ Admin Panel
+### Admin Panel
 ![Admin Panel](screenshots/admin.png)
+
+### Job Posting 
+![Post Job](screenshots/post-job.png)
 
 ------------------------------------------------------------------------------------------------
 ### ✅ API Endpoints
