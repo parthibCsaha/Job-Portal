@@ -133,10 +133,6 @@ flowchart LR
     NotificationService --> Notifications
     EmailService --> NotificationService
 
-    %% Saved jobs relation
-    SavedJobs --> Candidates
-    SavedJobs --> Jobs
-
 ```
 -------------------------------------------------------------------------------------------------
 
