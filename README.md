@@ -139,9 +139,6 @@ flowchart LR
     SavedJobs --> Candidates
     SavedJobs --> Jobs
 
-    %% Notes
-    classDef note fill:#f9f,stroke:#333,stroke-width:0.5;
-    FileStorage:::note
 ```
 
 ```
