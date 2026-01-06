@@ -131,7 +131,6 @@ flowchart LR
     GroqAIService --> Jobs
     GroqAIService --> Candidates
     NotificationService --> Notifications
-    EmailService --> NotificationService
 
 ```
 -------------------------------------------------------------------------------------------------
