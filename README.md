@@ -366,6 +366,7 @@ sequenceDiagram
 - Spring Security + JWT
 - Spring Data JPA (Hibernate)
 - PostgreSQL
+- Groq AI Integration
 - Maven
   
  #### Frontend
