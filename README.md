@@ -114,18 +114,25 @@ flowchart LR
 ## 📊 Data Model (ER Diagram)
 ```mermaid
 erDiagram
-  USER ||--|| CANDIDATE : has
-  USER ||--|| EMPLOYER : has
-  EMPLOYER }|--|| COMPANY : works_for
-  COMPANY ||--|{ JOB : offers
-  EMPLOYER ||--|{ JOB : posts
-  JOB ||--|{ APPLICATION : receives
-  CANDIDATE ||--|{ APPLICATION : submits
-  CANDIDATE ||--|{ SAVEDJOB : saves
-  JOB ||--|{ SAVEDJOB : is_saved_as
-  CANDIDATE ||--|| RESUME_ANALYSIS : has
-  CANDIDATE ||--|{ AI_JOB_MATCH : has
-  JOB ||--|{ AI_JOB_MATCH : analyzed_for
+  USER ||--|| CANDIDATE : "is"
+  USER ||--|| EMPLOYER : "is"
+
+  EMPLOYER }|--|| COMPANY : "works_for"
+  COMPANY ||--|{ JOB : "offers"
+  EMPLOYER ||--|{ JOB : "posts"
+
+  JOB ||--|{ APPLICATION : "receives"
+  CANDIDATE ||--|{ APPLICATION : "submits"
+
+  CANDIDATE ||--|{ SAVEDJOB : "saves"
+  JOB ||--|{ SAVEDJOB : "is_saved_as"
+
+  CANDIDATE ||--|| RESUME_ANALYSIS : "has"
+
+  CANDIDATE ||--|{ AI_JOB_MATCH : "has"
+  JOB ||--|{ AI_JOB_MATCH : "analyzed_for"
+
+  USER ||--o{ NOTIFICATION : "receives"
 
   USER {
     Long id PK
