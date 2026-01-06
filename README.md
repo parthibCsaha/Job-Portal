@@ -303,6 +303,9 @@ sequenceDiagram
 ### Job Posting 
 ![Post Job](screenshots/post-job.png)
 
+### AI Rank Candidates 
+![AI Rank Candidates](screenshots/airank.png)
+
 ### Employer 
 ![Employer](screenshots/employer.png)
 
