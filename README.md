@@ -1,4 +1,4 @@
-### 🧑‍💻 Job Portal – Full Stack Web Application
+### 🧑‍💻 AI Powered Job Portal – Full Stack Web Application
 ---
 
 [![Java](https://img.shields.io/badge/Java-17%2B-blue.svg)](https://www.oracle.com/java/)
@@ -13,6 +13,8 @@
 ### 🚀 Project Overview
    A modern, full-stack job portal platform built with **Spring Boot (Java)** and **React + Vite**.  
    It allows **candidates** to browse and apply for jobs, **employers** to post and manage job listings, and **admins** to oversee the entire system.
+   This project also includes optional AI capabilities via Groq api for resume analysis, AI job matching & scoring, candidate ranking, and job description generation.
+
     
 ------------------------------------------------------------------------------------------------------------
 ### ⭐ Features
