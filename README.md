@@ -51,71 +51,99 @@
 ### 🏗️ System Architecture
 ```mermaid
 flowchart LR
-
-    %% ======================= CLIENT ======================
     subgraph Client["🌐 Frontend (React + Vite)"]
-        UI["User Interface"]
+        UI["User Interface (SPA)"]
     end
 
-    %% ======================= BACKEND ======================
     subgraph Server["⚙️ Backend (Spring Boot)"]
-        AuthService["AuthService"]
-        UserService["UserService"]
-        JobService["JobService"]
-        CompanyService["CompanyService"]
-        ApplicationService["ApplicationService"]
-        SavedJobService["SavedJobService"]
-        NotificationService["NotificationService"]
-        EmailService["EmailService"]
+        subgraph Controllers["REST Controllers"]
+            AuthController["AuthController (/api/auth)"]
+            UserController["UserController (/api/users)"]
+            JobController["JobController (/api/jobs)"]
+            CompanyController["CompanyController (/api/companies)"]
+            ApplicationController["ApplicationController (/api/applications)"]
+            FileController["FileController (/api/files)"]
+            AIController["AIController (/api/ai)"]
+            NotificationController["NotificationController (/api/notifications)"]
+        end
+
+        subgraph Services["Service Layer"]
+            AuthService["AuthService (JWT)"]
+            UserService["UserService"]
+            JobService["JobService"]
+            CompanyService["CompanyService"]
+            ApplicationService["ApplicationService"]
+            NotificationService["NotificationService"]
+            EmailService["EmailService (SMTP)"]
+            GroqAIService["GroqAIService (AI) "]
+            ResumeParserService["ResumeParserService (PDF/DOC parsing)"]
+        end
+
+        FileStorage["File storage (uploads/)"]
     end
 
-    %% ======================= DATABASE ======================
-    subgraph DB["🗄 PostgreSQL"]
-        UserTable[(users)]
-        CompanyTable[(companies)]
-        JobTable[(jobs)]
-        CandidateTable[(candidates)]
-        EmployerTable[(employers)]
-        ApplicationTable[(applications)]
-        SavedJobTable[(saved_jobs)]
-        NotificationTable[(notifications)]
-        RoleTable[(roles)]
+    subgraph DB["🗄 PostgreSQL (data tables)"]
+        Users[(users)]
+        Candidates[(candidates)]
+        Employers[(employers)]
+        Companies[(companies)]
+        Jobs[(jobs)]
+        Applications[(applications)]
+        SavedJobs[(saved_jobs)]
+        ResumeAnalyses[(resume_analyses)]
+        AIJobMatches[(ai_job_matches)]
+        Notifications[(notifications)]
     end
 
-    %% ======================= UI TO API =====================
-    UI --> AuthService
-    UI --> UserService
-    UI --> JobService
-    UI --> CompanyService
-    UI --> ApplicationService
-    UI --> SavedJobService
-    UI --> NotificationService
+    %% Client -> Controllers
+    UI -->|API calls| AuthController
+    UI -->|API calls| UserController
+    UI -->|API calls| JobController
+    UI -->|API calls| CompanyController
+    UI -->|API calls| ApplicationController
+    UI -->|API calls| FileController
+    UI -->|API calls| AIController
+    UI -->|API calls| NotificationController
 
-    %% ======================= SERVICES TO DATABASE ==========
-    AuthService --> UserTable
-    AuthService --> RoleTable
+    %% Controllers -> Services
+    AuthController --> AuthService
+    UserController --> UserService
+    JobController --> JobService
+    CompanyController --> CompanyService
+    ApplicationController --> ApplicationService
+    FileController --> ResumeParserService
+    FileController --> FileStorage
+    AIController --> GroqAIService
+    NotificationController --> NotificationService
 
-    UserService --> UserTable
-    UserService --> CandidateTable
-    UserService --> EmployerTable
-
-    CompanyService --> CompanyTable
-
-    JobService --> JobTable
-    JobService --> CompanyTable
-
-    ApplicationService --> ApplicationTable
-    ApplicationService --> UserTable
-    ApplicationService --> JobTable
-
-    SavedJobService --> SavedJobTable
-    SavedJobTable --> UserTable
-    SavedJobTable --> JobTable
-
-    NotificationService --> NotificationTable
-    NotificationService --> UserTable
-
+    %% Services -> DB / Storage
+    AuthService --> Users
+    UserService --> Users
+    UserService --> Candidates
+    UserService --> Employers
+    CompanyService --> Companies
+    JobService --> Jobs
+    JobService --> Companies
+    ApplicationService --> Applications
+    ApplicationService --> Jobs
+    ApplicationService --> Candidates
+    ResumeParserService --> FileStorage
+    GroqAIService --> AIJobMatches
+    GroqAIService --> ResumeAnalyses
+    GroqAIService --> Jobs
+    GroqAIService --> Candidates
+    NotificationService --> Notifications
     EmailService --> NotificationService
+
+    %% Saved jobs relation
+    SavedJobs --> Candidates
+    SavedJobs --> Jobs
+
+    %% Notes
+    classDef note fill:#f9f,stroke:#333,stroke-width:0.5;
+    FileStorage:::note
+```
+
 ```
 -------------------------------------------------------------------------------------------------
 
