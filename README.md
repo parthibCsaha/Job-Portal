@@ -307,7 +307,7 @@ sequenceDiagram
 ![Employer](screenshots/employer.png)
 
 ### Apply Job   
-![Apply Job](screenshots/user.png)
+![Apply Job](screenshots/apply.png)
 
 ### Candidate 
 ![Candidate](screenshots/candidate.png)
