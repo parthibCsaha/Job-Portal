@@ -9,6 +9,7 @@
 [![Tailwind CSS](https://img.shields.io/badge/TailwindCSS-3.x-38bdf8?logo=tailwindcss)](https://tailwindcss.com/)
 
 
+
 ### 🚀 Project Overview
    A modern, full-stack job portal platform built with **Spring Boot (Java)** and **React + Vite**.  
    It allows **candidates** to browse and apply for jobs, **employers** to post and manage job listings, and **admins** to oversee the entire system.
@@ -113,17 +114,21 @@ flowchart LR
 ## 📊 Data Model (ER Diagram)
 ```mermaid
 erDiagram
-  USER ||--|| CANDIDATE : "is"
-  USER ||--|| EMPLOYER : "is"
-  EMPLOYER }|--|| COMPANY : "works_for"
-  EMPLOYER ||--|{ JOB : "creates"
-  COMPANY ||--|{ JOB : "offers"
-  JOB ||--|{ APPLICATION : "receives"
-  JOB ||--|{ SAVEDJOB : "is_saved_as"
-  CANDIDATE ||--|{ APPLICATION : "submits"
-  CANDIDATE ||--|{ SAVEDJOB : "saves"
+  USER ||--|| CANDIDATE : has
+  USER ||--|| EMPLOYER : has
+  EMPLOYER }|--|| COMPANY : works_for
+  COMPANY ||--|{ JOB : offers
+  EMPLOYER ||--|{ JOB : posts
+  JOB ||--|{ APPLICATION : receives
+  CANDIDATE ||--|{ APPLICATION : submits
+  CANDIDATE ||--|{ SAVEDJOB : saves
+  JOB ||--|{ SAVEDJOB : is_saved_as
+  CANDIDATE ||--|| RESUME_ANALYSIS : has
+  CANDIDATE ||--|{ AI_JOB_MATCH : has
+  JOB ||--|{ AI_JOB_MATCH : analyzed_for
+
   USER {
-    Long id
+    Long id PK
     String email
     String password
     Role role
@@ -132,27 +137,27 @@ erDiagram
     LocalDateTime updatedAt
   }
   CANDIDATE {
-    Long id
-    Long user_id
+    Long id PK
+    Long user_id FK
     String fullName
     String phone
     String location
-    String resumeUrl
     String skills
     String experience
     String education
     LocalDateTime createdAt
   }
   EMPLOYER {
-    Long id
-    Long user_id
-    Long company_id
+    Long id PK
+    Long user_id FK
+    Long company_id FK
+    String fullName
     String position
     String phone
     LocalDateTime createdAt
   }
   COMPANY {
-    Long id
+    Long id PK
     String name
     String description
     String industry
@@ -163,35 +168,68 @@ erDiagram
     LocalDateTime updatedAt
   }
   JOB {
-    Long id
-    Long company_id
-    Long employer_id
+    Long id PK
+    Long company_id FK
+    Long employer_id FK
     String title
     String description
     String requirements
     String location
     JobType jobType
     String salaryRange
-    LocalDate createdAt
-    LocalDateTime updatedAt
+    String experienceLevel
+    JobStatus status
+    LocalDate postedDate
+    LocalDate closingDate
   }
   APPLICATION {
-    Long id
-    Long job_id
-    Long candidate_id
+    Long id PK
+    Long job_id FK
+    Long candidate_id FK
     String coverLetter
-    String resumeUrl
+    TEXT resumeText
+    Integer aiMatchScore
     ApplicationStatus status
     LocalDateTime appliedDate
     LocalDateTime updatedAt
   }
   SAVEDJOB {
-    Long id
-    Long candidate_id
-    Long job_id
+    Long id PK
+    Long candidate_id FK
+    Long job_id FK
     LocalDateTime savedAt
   }
-
+  RESUME_ANALYSIS {
+    Long id PK
+    Long candidate_id FK
+    TEXT resumeText
+    String extractedSkills
+    String experienceSummary
+    String educationSummary
+    String suggestedJobTitles
+    String overallSummary
+    LocalDateTime analyzedAt
+  }
+  AI_JOB_MATCH {
+    Long id PK
+    Long candidate_id FK
+    Long job_id FK
+    Integer matchScore
+    String matchingSkills
+    String missingSkills
+    String strengthsSummary
+    String recommendation
+    LocalDateTime analyzedAt
+  }
+  NOTIFICATION {
+    Long id PK
+    Long userId
+    String type
+    String message
+    Boolean isRead
+    Long referenceId
+    LocalDateTime createdAt
+  }
 ```
 
 ----------------------------------------------------------------------------------------------
