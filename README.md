@@ -78,8 +78,6 @@ flowchart LR
             GroqAIService["GroqAIService (AI) "]
             ResumeParserService["ResumeParserService (PDF/DOC parsing)"]
         end
-
-        FileStorage["File storage (uploads/)"]
     end
 
     subgraph DB["🗄 PostgreSQL (data tables)"]
@@ -138,8 +136,6 @@ flowchart LR
     %% Saved jobs relation
     SavedJobs --> Candidates
     SavedJobs --> Jobs
-
-```
 
 ```
 -------------------------------------------------------------------------------------------------
