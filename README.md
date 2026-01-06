@@ -16,6 +16,14 @@
     
 ------------------------------------------------------------------------------------------------------------
 ### ⭐ Features
+
+  ### 🤖 AI Features (Powered by Groq)
+   - **Smart Resume Analysis**: Automatically extracts skills, experience, and education from resumes.
+   - **AI Job Matching**: Calculates a match score (0-100%) between candidates and job requirements.
+   - **Automated Ranking**: Ranks applicants based on their relevance to the job description.
+   - **Job Description Generator**: Helps employers create detailed job posts from simple prompts.
+   - **AI Career Assistant**: A chat interface for career advice and interview preparation.
+
   #### 👨‍🎓 Candidates
   
    - Browse & filter jobs (location, type, experience, keywords)
