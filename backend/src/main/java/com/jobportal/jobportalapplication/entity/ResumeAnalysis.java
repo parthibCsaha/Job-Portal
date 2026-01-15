@@ -11,42 +11,44 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "applications")
+@Table(name = "resume_analyses")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
-public class Application {
+public class ResumeAnalysis {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "job_id", nullable = false)
-    private Job job;
-
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "candidate_id", nullable = false)
     private Candidate candidate;
 
-    @Column(length = 2000)
-    private String coverLetter;
-
-    @Column(columnDefinition = "TEXT")
+    @Column(length = 5000)
     private String resumeText;
 
-    @Column
-    private Integer aiMatchScore;
+    @Column(length = 2000)
+    private String extractedSkills;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private ApplicationStatus status = ApplicationStatus.PENDING;
+    @Column(length = 3000)
+    private String experienceSummary;
+
+    @Column(length = 2000)
+    private String educationSummary;
+
+    @Column(length = 1000)
+    private String suggestedJobTitles;
+
+    @Column(length = 3000)
+    private String overallSummary;
 
     @CreatedDate
     @Column(nullable = false, updatable = false)
-    private LocalDateTime appliedDate;
+    private LocalDateTime analyzedAt;
 
     @LastModifiedDate
     private LocalDateTime updatedAt;
 }
+
